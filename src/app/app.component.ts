@@ -36,9 +36,6 @@ export class AppComponent implements AfterContentInit {
   title = 'project';
   
   items: GridsterItem[] = [ { x: 0, y: 0, rows: 1, cols: 1, content: 'this.result',compile:false},  ];
-  
-  
-
   editorOptions = {theme: 'vs-dark', language: 'javascript', automaticLayout: true };
   onInit(editor: { getPosition: () => any; }) {
     let line = editor.getPosition();
@@ -51,7 +48,7 @@ export class AppComponent implements AfterContentInit {
 }
 
 reset(){
-  this.text = this.defcode;
+  this.items[1].content = "";
    this.result="";
 
 }
