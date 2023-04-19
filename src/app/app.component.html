@@ -1,4 +1,4 @@
-<!-- NAVBAR AREA -->
+
 
 <div   class="d-flex flex-row-reverse " style=" 
 padding: 2px;
@@ -40,24 +40,30 @@ padding-right: 10px;
   
  
 
-  <div class=" mt-5 d-flex justify-content-between">
-        <div style=" overflow-y: scroll; " class="ps-5 container padding-top">
-         
-            
-            <app-tabs></app-tabs>
-        </div>
+  <div class=" mt-5 d-flex justify-content-between editor-height">
+      
         
-        <div class="codeBox container" >
-          <ngx-monaco-editor   class ="editor" [options]="editorOptions" (onInit)="onInit($event)"[(ngModel)]="code"></ngx-monaco-editor>
-          <!-- <app-filecomp (x)="printCode($event)" ></app-filecomp> -->
+        <div class="codeBox container" > 
+          <gridster [options]="gridsterOptions">
+             <gridster-item [item]="item" *ngFor="let item of items">
+             <div *ngIf="item.compile">
+              <ngx-monaco-editor class ="editor" [options]="editorOptions" (onInit)="onInit($event)"[(ngModel)]="item.content"></ngx-monaco-editor> 
+             </div>  
+               <div  *ngIf="!item.compile" class="card bg-dark text-white" style="height:100%">
+                <div  class="card-body">{{result}}</div>
+              </div>
+              
+              </gridster-item> 
+            </gridster>
+
+      
           <button class="btn btn-light btn-sm dark-mode " (click)="getFile()">Open File</button>
           <button  class = "btn btn-light btn-sm ms-2 dark-mode float-end" (click)="saveas()">Save as</button>
           <button class="btn btn-light btn-sm ms-2  dark-mode float-end" (click)="save()">Save</button>
-          <button class="btn btn-light btn-sm dark-mode   float-end" (click)="compile()">Compile</button>
+          <button class="btn btn-light btn-sm dark-mode   float-end" (click)="compile(items[1].content)">Compile</button>
           
-          <div  class="card bg-dark text-white" style="height:50%">
-            <div  class="card-body">{{result}}</div>
-          </div>
+          
+         
         </div>
   </div>
   

@@ -19,6 +19,7 @@ import { OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubmissionComponent } from './submission/submission.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { GridsterComponent, GridsterItemComponent, GridsterModule } from 'angular-gridster2';
 @NgModule({
 
   declarations: [
@@ -49,7 +50,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatListModule,
     OverlayModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    GridsterComponent, 
+    GridsterItemComponent
 
   ],
   providers: [],
